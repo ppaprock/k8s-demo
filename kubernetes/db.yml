@@ -1,0 +1,36 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: db-instance
+  labels:
+    app: db-instance
+spec:
+  containers:
+  - name: mysql
+    image: ppaprock/mysql-demo
+    ports:
+      - name: mysql-port
+        containerPort: 3306
+    env:
+      - name: MYSQL_ROOT_PASSWORD
+        valueFrom:
+          secretKeyRef:
+            name: prime-secrets
+            key: db-root-password
+      - name: MYSQL_PASSWORD
+        valueFrom:
+          secretKeyRef:
+            name: prime-secrets
+            key: db-password
+      - name: MYSQL_DATABASE
+        value: example
+      - name: MYSQL_USER
+        value: test
+    volumeMounts:
+      - mountPath: "/var/lib/mysql"
+        name: mysql-storage
+        subPath: mysql
+  volumes:
+   - name: mysql-storage
+     persistentVolumeClaim:
+       claimName: db-storage

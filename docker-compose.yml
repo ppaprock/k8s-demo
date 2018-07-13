@@ -1,0 +1,25 @@
+version: '3.3'
+
+services:
+   db:
+     image: ppaprock/mysql-demo
+     volumes:
+       - db_data:/var/lib/mysql
+     restart: always
+     environment:
+       MYSQL_ROOT_PASSWORD: rootpswd
+       MYSQL_DATABASE: example
+       MYSQL_USER: test
+       MYSQL_PASSWORD: thisissecret
+
+   prime:
+     depends_on:
+       - db
+     image: ppaprock/prime-demo
+     ports:
+       - "8080:8080"
+       - "9990:9990"
+     restart: always
+volumes:
+    db_data:
+

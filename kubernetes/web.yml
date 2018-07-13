@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: prime-web
+  labels:
+    app: prime-web
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: prime-web
+  template:
+    metadata:
+      labels:
+        app: prime-web
+    spec:
+      containers:
+      - name: web
+        image: ppaprock/prime-demo
+        ports:
+        - name: http-port
+          containerPort: 8080
+        - name: admin-port
+          containerPort: 9990

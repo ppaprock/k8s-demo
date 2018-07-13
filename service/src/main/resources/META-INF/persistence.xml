@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<persistence xmlns="http://xmlns.jcp.org/xml/ns/persistence" version="2.1">
+<persistence-unit name="dbPU">
+    <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+    <jta-data-source>java:jboss/datasources/ExampleMySQLDS</jta-data-source>
+    <class>pl.ppaprock.bean.AEntity</class>
+    <properties>
+        <property name="hibernate.dialect" value="org.hibernate.dialect.MySQLDialect" />
+    </properties>
+</persistence-unit>
+</persistence>

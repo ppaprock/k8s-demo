@@ -1,0 +1,25 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+<h:head>
+</h:head>
+<h:body>
+    <h:form>
+        <p:growl id="msgs" showDetail="true"/>
+
+        <p:fieldset legend="Simple application on Kubernetes ">
+            <h:panelGrid>
+                <p:row>
+                    <p:inputTextarea rows="3" cols="33" value="#{mrSimple.data}"/>
+                </p:row>
+                <p:row>
+                    <p:commandButton value="Save" id="withIcon"
+                                     actionListener="#{mrSimple.saveAction}"
+                                     update="msgs"
+                                     icon="ui-icon-disk"/>
+                </p:row>
+            </h:panelGrid>
+        </p:fieldset>
+    </h:form>
+</h:body>
+</html>
