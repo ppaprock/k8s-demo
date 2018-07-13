@@ -1,3 +1,5 @@
+#!/bin/bash
+
 ACT=$(whiptail --menu "Choose action" 20 80 8 \
 RUN "Run local" \
 STOP "Stop local" \
